@@ -9,12 +9,13 @@ search_request = session.get(url='https://discoverygc.com/forums/showthread.php?
 response = BeautifulSoup(search_request.text, 'lxml')
 
 spoilers = response.select('.spoiler_wrap')
-level = 4
 f = open("gwg_inventory.csv", "w")
+f.write('Category,Name,Price,Inventory Count,Hull Damage,Shield Damage,Range,Projectile Speed,Refire Rate,Energy Usage\n')
+category = ''
 for spoiler in spoilers:
     inner_spoilers = spoiler.select('.spoiler_wrap')
     if(len(inner_spoilers) > 0):
-        level += 1
+        category = spoiler.select('a')[0].text.replace(',', ' - ')
     else:
         header = spoiler.select('a')[0].text.split(' - ')
         name = header[0]
@@ -27,6 +28,6 @@ for spoiler in spoilers:
         speed = details[4].text
         rate = details[5].text
         energy = details[6].text
-        info = GunInfocard(level, name, price, count, hull, shield, range, speed, rate, energy)
+        info = GunInfocard(category, name, price, count, hull, shield, range, speed, rate, energy)
         f.write(info.__str__()+'\n')
 f.close()

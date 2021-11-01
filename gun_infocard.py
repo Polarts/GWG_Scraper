@@ -1,6 +1,6 @@
 class GunInfocard:
-    def __init__(self, level, name, price, count, hull_dmg, shield_dmg, range, speed, rate, energy_usage):
-        self.level = level
+    def __init__(self, category, name, price, count, hull_dmg, shield_dmg, range, speed, rate, energy_usage):
+        self.category = category
         self.name = name
         self.price = price
         self.count = count
@@ -12,7 +12,7 @@ class GunInfocard:
         self.energy_usage = energy_usage
 
     def __str__(self):
-        return self.level.__str__() +','+\
+        return self.category +','+\
             self.name +','+\
                 self.price +'.'+\
                     self.count +','+\
