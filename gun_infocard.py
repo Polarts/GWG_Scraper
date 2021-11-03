@@ -14,9 +14,11 @@ class GunInfocard:
     def __str__(self):
         return self.category +','+\
             self.name +','+\
-                self.price +'.'+\
+                self.price +','+\
                     self.count +','+\
                         self.hull_dmg +','+\
                             self.shield_dmg +','+\
                                 self.range +','+\
-                                    self.energy_usage
+                                    self.speed +','+\
+                                        self.rate +','+\
+                                            self.energy_usage

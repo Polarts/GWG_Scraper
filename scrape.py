@@ -15,15 +15,15 @@ category = ''
 for spoiler in spoilers:
     inner_spoilers = spoiler.select('.spoiler_wrap')
     if(len(inner_spoilers) > 0):
-        category = spoiler.select('a')[0].text.replace(',', ' - ')
+        category = spoiler.select('a')[0].text.replace(',', ' -')
     else:
         header = spoiler.select('a')[0].text.split(' - ')
         name = header[0]
-        price = header[1]
+        price = header[1].replace('.','')
         details = spoiler.select('.mycode_color')
         count = details[0].text
         hull = details[1].text
-        shield = details[2].text
+        shield = details[2].text.replace('m','')
         range = details[3].text
         speed = details[4].text
         rate = details[5].text
